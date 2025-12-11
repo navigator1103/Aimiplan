@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transforming Aimee Into a Scalable SaaS Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --dark: #1f2937;
+            --gray: #6b7280;
+            --light-gray: #f3f4f6;
+            --border: #e5e7eb;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #ffffff;
+            color: var(--dark);
+            overflow: hidden;
+            min-height: 100vh;
+        }
+
+        .presentation {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 4rem;
+            background: #ffffff;
+            overflow: hidden;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .slide-content {
+            max-width: 1400px;
+            width: 100%;
+            max-height: calc(100vh - 6rem);
+            overflow: hidden;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+        }
+
+        h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #000000;
+        }
+
+        h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #000000;
+        }
+
+        .subtitle {
+            font-size: 1.125rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        p {
+            font-size: 0.875rem;
+            line-height: 1.5;
+            color: var(--gray);
+            font-weight: 400;
+        }
+
+        strong {
+            color: #000000;
+            font-weight: 700;
+        }
+
+        /* Slide 1 - Title */
+        .slide-1 .slide-content {
+            text-align: center;
+        }
+
+        .slide-1 h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .slide-1 .subtitle {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: 800;
+            color: white;
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.25);
+        }
+
+        /* Two column layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .limitation-box {
+            background: var(--light-gray);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+
+        .limitation-box h4 {
+            color: #000000;
+            margin-bottom: 1rem;
+            font-size: 1.125rem;
+        }
+
+        ul {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+
+        ul li {
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.5rem;
+            background: white;
+            border-left: 3px solid var(--primary);
+            border-radius: 8px;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.875rem;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Icon grid */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .icon-block {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .icon-block:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.15);
+            border-color: var(--primary);
+        }
+
+        .icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .icon .material-icons {
+            font-size: 36px;
+        }
+
+        .icon-block h4 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .icon-block p {
+            font-size: 0.875rem;
+            color: var(--gray);
+            line-height: 1.5;
+        }
+
+        /* Timeline */
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 2rem;
+            position: relative;
+            padding: 1.5rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            z-index: 0;
+        }
+
+        .milestone {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            flex: 1;
+        }
+
+        .milestone-circle {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: white;
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--primary);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.2);
+        }
+
+        .milestone h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: #000000;
+        }
+
+        .milestone h4 {
+            font-size: 1rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .milestone p {
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .card {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.15);
+            border-color: var(--primary);
+        }
+
+        .card h4 {
+            color: #000000;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .card p {
+            color: var(--gray);
+            line-height: 1.5;
+            font-size: 0.875rem;
+        }
+
+        /* Outcome box */
+        .outcome-box {
+            margin-top: 1.5rem;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            border-left: 4px solid var(--primary);
+            border-radius: 12px;
+        }
+
+        .outcome-box h4 {
+            color: #000000;
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+        }
+
+        .outcome-box p {
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+
+        /* Hero section */
+        .hero-section {
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        .hero-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--success) 0%, var(--primary) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.3);
+        }
+
+        .hero-icon .material-icons {
+            font-size: 60px;
+        }
+
+        /* Pricing grid */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .pricing-box {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem 1.25rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-box:hover {
+            border-color: var(--primary);
+            transform: scale(1.03);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .pricing-box h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .pricing-box p {
+            color: var(--gray);
+            font-size: 0.875rem;
+        }
+
+        /* CTA grid */
+        .cta-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .cta-item {
+            background: white;
+            border: 2px solid var(--border);
+            border-left: 4px solid var(--primary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
+        }
+
+        .cta-item h4 {
+            color: #000000;
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+        }
+
+        .cta-item p {
+            color: var(--gray);
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        .final-cta {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .final-cta h3 {
+            font-size: 1.75rem;
+            color: var(--dark);
+        }
+
+        /* Gantt Chart */
+        .gantt-container {
+            margin-top: 1.5rem;
+            overflow-x: auto;
+        }
+
+        .gantt-header {
+            display: grid;
+            grid-template-columns: 250px repeat(4, 1fr);
+            gap: 0;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--dark);
+        }
+
+        .gantt-header div {
+            padding: 0.75rem;
+            text-align: center;
+            background: var(--light-gray);
+            border-radius: 8px;
+        }
+
+        .gantt-header div:first-child {
+            text-align: left;
+            background: transparent;
+        }
+
+        .gantt-row {
+            display: grid;
+            grid-template-columns: 250px repeat(4, 1fr);
+            gap: 0;
+            margin-bottom: 0.75rem;
+            align-items: center;
+        }
+
+        .gantt-task {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--dark);
+            padding: 0.5rem 0;
+        }
+
+        .gantt-timeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+            grid-column: 2 / -1;
+        }
+
+        .gantt-bar-container {
+            position: relative;
+            height: 32px;
+            display: flex;
+            align-items: center;
+        }
+
+        .gantt-bar {
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .gantt-bar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+        }
+
+        .gantt-bar.span-1 {
+            width: 100%;
+        }
+
+        .gantt-bar.span-2 {
+            width: calc(200% + 0.5rem);
+        }
+
+        .gantt-bar.span-3 {
+            width: calc(300% + 1rem);
+        }
+
+        .gantt-bar.span-4 {
+            width: calc(400% + 1.5rem);
+        }
+
+        .week-marker {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Navigation */
+        .controls {
+            position: fixed;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            background: white;
+            padding: 1rem 2.5rem;
+            border-radius: 60px;
+            border: 2px solid var(--border);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .nav-btn .material-icons {
+            font-size: 28px;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: var(--secondary);
+            transform: scale(1.1);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .slide-counter {
+            font-size: 1.125rem;
+            color: var(--dark);
+            font-weight: 700;
+            min-width: 90px;
+            text-align: center;
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--light-gray);
+            z-index: 1001;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            transition: width 0.4s ease;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .slide {
+                padding: 2rem 1.5rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.25rem;
+            }
+
+            .two-column,
+            .pricing-grid,
+            .cta-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                flex-direction: column;
+                gap: 3rem;
+            }
+
+            .timeline::before {
+                display: none;
+            }
+
+            .icon-grid,
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress bar -->
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <div class="presentation">
+        <!-- Slide 1: Title -->
+        <section class="slide active slide-1" data-slide="1">
+            <div class="slide-content">
+                <div class="logo">A</div>
+                <h1>Transforming Aimee Into a Scalable SaaS Platform</h1>
+                <p class="subtitle">A 90-Day Business Transformation Plan</p>
+            </div>
+        </section>
+
+        <!-- Slide 2: Why This Transformation Matters -->
+        <section class="slide" data-slide="2">
+            <div class="slide-content">
+                <h2>Why This Transformation Matters</h2>
+                <p class="subtitle">Aimee is powerful — but as a standalone app, it cannot scale fast enough.</p>
+
+                <div class="two-column">
+                    <div class="limitation-box">
+                        <h4>Current Limitations</h4>
+                        <ul>
+                            <li>Manual onboarding takes time</li>
+                            <li>Hard to serve multiple clients simultaneously</li>
+                            <li>Workflows rely on personal setup</li>
+                            <li>No recurring revenue model</li>
+                        </ul>
+                    </div>
+                    <div class="limitation-box">
+                        <h4>Business Need</h4>
+                        <p style="padding-top: 1rem; font-size: 1rem; color: var(--dark); font-weight: 600; line-height: 1.6;">
+                            Scale Aimee globally with self-serve access and predictable subscriptions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: What Aimee Will Become -->
+        <section class="slide" data-slide="3">
+            <div class="slide-content">
+                <h2>What Aimee Will Become</h2>
+                <p class="subtitle">In 90 days, Aimee transforms into:</p>
+
+                <div class="icon-grid">
+                    <div class="icon-block">
+                        <div class="icon">
+                            <span class="material-icons">cloud</span>
+                        </div>
+                        <h4>Multi-client SaaS Platform</h4>
+                        <p>Serve multiple clients simultaneously with isolated data</p>
+                    </div>
+                    <div class="icon-block">
+                        <div class="icon">
+                            <span class="material-icons">dashboard</span>
+                        </div>
+                        <h4>Self-serve Onboarding</h4>
+                        <p>Clients can sign up and get started instantly</p>
+                    </div>
+                    <div class="icon-block">
+                        <div class="icon">
+                            <span class="material-icons">flash_on</span>
+                        </div>
+                        <h4>Automation Engine</h4>
+                        <p>Automated lead workflows and journeys</p>
+                    </div>
+                    <div class="icon-block">
+                        <div class="icon">
+                            <span class="material-icons">trending_up</span>
+                        </div>
+                        <h4>Subscription Business</h4>
+                        <p>Predictable recurring revenue model</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 4: 90-Day Plan at a Glance -->
+        <section class="slide" data-slide="4">
+            <div class="slide-content">
+                <h2>90-Day Plan at a Glance</h2>
+                <p class="subtitle">A simple, elegant timeline</p>
+
+                <div class="timeline">
+                    <div class="milestone">
+                        <div class="milestone-circle">1</div>
+                        <h3>Month 1</h3>
+                        <h4>Foundation</h4>
+                        <p>Build secure, scalable infrastructure</p>
+                    </div>
+                    <div class="milestone">
+                        <div class="milestone-circle">2</div>
+                        <h3>Month 2</h3>
+                        <h4>Core Features</h4>
+                        <p>Self-serve experience and automation</p>
+                    </div>
+                    <div class="milestone">
+                        <div class="milestone-circle">3</div>
+                        <h3>Month 3</h3>
+                        <h4>Monetization & Launch</h4>
+                        <p>Pricing, polish, and go-live</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5: Month 1 - Build the Foundation -->
+        <section class="slide" data-slide="5">
+            <div class="slide-content">
+                <h2>Month 1: Build the Foundation</h2>
+                <p class="subtitle">Focus: Make Aimee ready for scale</p>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>Multi-client Platform</h4>
+                        <p>Prepare the platform for multiple clients</p>
+                    </div>
+                    <div class="card">
+                        <h4>Data Isolation</h4>
+                        <p>Ensure each client's data stays isolated</p>
+                    </div>
+                    <div class="card">
+                        <h4>Basic Roles</h4>
+                        <p>Introduce roles (Admin, Editor, Viewer)</p>
+                    </div>
+                    <div class="card">
+                        <h4>Reliable Releases</h4>
+                        <p>Set up reliable releases and backups</p>
+                    </div>
+                </div>
+
+                <div class="outcome-box">
+                    <h4>Outcome</h4>
+                    <p>A secure, stable foundation for SaaS growth</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 6: Month 1 Gantt Chart -->
+        <section class="slide" data-slide="6">
+            <div class="slide-content">
+                <h2>Month 1: Detailed Timeline</h2>
+                <p class="subtitle">Week-by-week breakdown of foundation activities</p>
+
+                <div class="gantt-container">
+                    <div class="gantt-header">
+                        <div>Activity</div>
+                        <div>Week 1</div>
+                        <div>Week 2</div>
+                        <div>Week 3</div>
+                        <div>Week 4</div>
+                    </div>
+
+                    <div class="gantt-row">
+                        <div class="gantt-task">Requirements & Architecture Design</div>
+                        <div class="gantt-timeline">
+                            <div class="gantt-bar-container">
+                                <div class="gantt-bar span-2">2 weeks</div>
+                            </div>
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                        </div>
+                    </div>
+
+                    <div class="gantt-row">
+                        <div class="gantt-task">Multi-tenant Database Schema</div>
+                        <div class="gantt-timeline">
+                            <div class="week-marker"></div>
+                            <div class="gantt-bar-container">
+                                <div class="gantt-bar span-2">2 weeks</div>
+                            </div>
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                        </div>
+                    </div>
+
+                    <div class="gantt-row">
+                        <div class="gantt-task">Authentication & Role Setup</div>
+                        <div class="gantt-timeline">
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                            <div class="gantt-bar-container">
+                                <div class="gantt-bar span-1">1 wk</div>
+                            </div>
+                            <div class="week-marker"></div>
+                        </div>
+                    </div>
+
+                    <div class="gantt-row">
+                        <div class="gantt-task">Data Isolation & Permissions</div>
+                        <div class="gantt-timeline">
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                            <div class="gantt-bar-container">
+                                <div class="gantt-bar span-2">2 weeks</div>
+                            </div>
+                            <div class="week-marker"></div>
+                        </div>
+                    </div>
+
+                    <div class="gantt-row">
+                        <div class="gantt-task">CI/CD Pipeline Setup</div>
+                        <div class="gantt-timeline">
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                            <div class="gantt-bar-container">
+                                <div class="gantt-bar span-1">1 wk</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gantt-row">
+                        <div class="gantt-task">Cloud Deployment & Backups</div>
+                        <div class="gantt-timeline">
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                            <div class="gantt-bar-container">
+                                <div class="gantt-bar span-1">1 wk</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gantt-row">
+                        <div class="gantt-task">Integration Testing & QA</div>
+                        <div class="gantt-timeline">
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                            <div class="gantt-bar-container">
+                                <div class="gantt-bar span-2">2 weeks</div>
+                            </div>
+                            <div class="week-marker"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 7: Month 2 - Add Core SaaS Experience -->
+        <section class="slide" data-slide="7">
+            <div class="slide-content">
+                <h2>Month 2: Add Core SaaS Experience</h2>
+                <p class="subtitle">Focus: Make Aimee usable without support</p>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>Onboarding Flow</h4>
+                        <p>Launch a simple onboarding flow</p>
+                    </div>
+                    <div class="card">
+                        <h4>Automated Journeys</h4>
+                        <p>Introduce automated customer journeys</p>
+                    </div>
+                    <div class="card">
+                        <h4>Lead Pipeline</h4>
+                        <p>Add a clear lead pipeline view</p>
+                    </div>
+                    <div class="card">
+                        <h4>Admin Area</h4>
+                        <p>Create a lightweight admin area</p>
+                    </div>
+                </div>
+
+                <div class="outcome-box">
+                    <h4>Outcome</h4>
+                    <p>Clients can set themselves up and start using Aimee instantly</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 8: Month 2 Gantt Chart -->
+        <section class="slide" data-slide="8">
+            <div class="slide-content">
+                <h2>Month 2: Detailed Timeline</h2>
+                <p class="subtitle">Week-by-week breakdown of core feature development</p>
+
+                <div class="gantt-container">
+                    <div class="gantt-header">
+                        <div>Activity</div>
+                        <div>Week 1</div>
+                        <div>Week 2</div>
+                        <div>Week 3</div>
+                        <div>Week 4</div>
+                    </div>
+
+                    <div class="gantt-row">
+                        <div class="gantt-task">Onboarding Flow & User Registration</div>
+                        <div class="gantt-timeline">
+                            <div class="gantt-bar-container">
+                                <div class="gantt-bar span-2">2 weeks</div>
+                            </div>
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                        </div>
+                    </div>
+
+                    <div class="gantt-row">
+                        <div class="gantt-task">Journey Builder & Automation Engine</div>
+                        <div class="gantt-timeline">
+                            <div class="week-marker"></div>
+                            <div class="gantt-bar-container">
+                                <div class="gantt-bar span-3">3 weeks</div>
+                            </div>
+                            <div class="week-marker"></div>
+                        </div>
+                    </div>
+
+                    <div class="gantt-row">
+                        <div class="gantt-task">Lead Pipeline & Scoring System</div>
+                        <div class="gantt-timeline">
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                            <div class="gantt-bar-container">
+                                <div class="gantt-bar span-2">2 weeks</div>
+                            </div>
+                            <div class="week-marker"></div>
+                        </div>
+                    </div>
+
+                    <div class="gantt-row">
+                        <div class="gantt-task">CRM Integration Setup</div>
+                        <div class="gantt-timeline">
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                            <div class="gantt-bar-container">
+                                <div class="gantt-bar span-2">2 weeks</div>
+                            </div>
+                            <div class="week-marker"></div>
+                        </div>
+                    </div>
+
+                    <div class="gantt-row">
+                        <div class="gantt-task">Admin Dashboard & Controls</div>
+                        <div class="gantt-timeline">
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                            <div class="gantt-bar-container">
+                                <div class="gantt-bar span-1">1 wk</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gantt-row">
+                        <div class="gantt-task">End-to-End Testing & QA</div>
+                        <div class="gantt-timeline">
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                            <div class="gantt-bar-container">
+                                <div class="gantt-bar span-1">1 wk</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gantt-row">
+                        <div class="gantt-task">User Acceptance Testing (UAT)</div>
+                        <div class="gantt-timeline">
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                            <div class="gantt-bar-container">
+                                <div class="gantt-bar span-1">1 wk</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 9: Month 3 - Monetize & Launch -->
+        <section class="slide" data-slide="9">
+            <div class="slide-content">
+                <h2>Month 3: Monetize & Launch</h2>
+                <p class="subtitle">Focus: Convert usage into revenue</p>
+
+                <div class="pricing-grid">
+                    <div class="pricing-box">
+                        <h3>Starter</h3>
+                        <p>Perfect for small teams</p>
+                    </div>
+                    <div class="pricing-box">
+                        <h3>Growth</h3>
+                        <p>For scaling businesses</p>
+                    </div>
+                    <div class="pricing-box">
+                        <h3>Enterprise</h3>
+                        <p>Custom solutions</p>
+                    </div>
+                </div>
+
+                <div class="card-grid" style="margin-top: 1.5rem;">
+                    <div class="card">
+                        <h4>UI Polish</h4>
+                        <p>Finalize user interface design</p>
+                    </div>
+                    <div class="card">
+                        <h4>Security Checks</h4>
+                        <p>Perform comprehensive security audit</p>
+                    </div>
+                    <div class="card">
+                        <h4>Launch Materials</h4>
+                        <p>Website + demo video</p>
+                    </div>
+                    <div class="card">
+                        <h4>Early Access</h4>
+                        <p>Invite beta users</p>
+                    </div>
+                </div>
+
+                <div class="outcome-box">
+                    <h4>Outcome</h4>
+                    <p>Aimee becomes a commercially ready SaaS platform</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 10: Month 3 Gantt Chart -->
+        <section class="slide" data-slide="10">
+            <div class="slide-content">
+                <h2>Month 3: Detailed Timeline</h2>
+                <p class="subtitle">Week-by-week breakdown of monetization and launch activities</p>
+
+                <div class="gantt-container">
+                    <div class="gantt-header">
+                        <div>Activity</div>
+                        <div>Week 1</div>
+                        <div>Week 2</div>
+                        <div>Week 3</div>
+                        <div>Week 4</div>
+                    </div>
+
+                    <div class="gantt-row">
+                        <div class="gantt-task">Pricing Tiers & Payment Integration</div>
+                        <div class="gantt-timeline">
+                            <div class="gantt-bar-container">
+                                <div class="gantt-bar span-2">2 weeks</div>
+                            </div>
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                        </div>
+                    </div>
+
+                    <div class="gantt-row">
+                        <div class="gantt-task">UI/UX Polish & Design Updates</div>
+                        <div class="gantt-timeline">
+                            <div class="gantt-bar-container">
+                                <div class="gantt-bar span-2">2 weeks</div>
+                            </div>
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                        </div>
+                    </div>
+
+                    <div class="gantt-row">
+                        <div class="gantt-task">Security Audit & Compliance</div>
+                        <div class="gantt-timeline">
+                            <div class="week-marker"></div>
+                            <div class="gantt-bar-container">
+                                <div class="gantt-bar span-2">2 weeks</div>
+                            </div>
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                        </div>
+                    </div>
+
+                    <div class="gantt-row">
+                        <div class="gantt-task">Performance Optimization</div>
+                        <div class="gantt-timeline">
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                            <div class="gantt-bar-container">
+                                <div class="gantt-bar span-1">1 wk</div>
+                            </div>
+                            <div class="week-marker"></div>
+                        </div>
+                    </div>
+
+                    <div class="gantt-row">
+                        <div class="gantt-task">Launch Website & Demo Video</div>
+                        <div class="gantt-timeline">
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                            <div class="gantt-bar-container">
+                                <div class="gantt-bar span-2">2 weeks</div>
+                            </div>
+                            <div class="week-marker"></div>
+                        </div>
+                    </div>
+
+                    <div class="gantt-row">
+                        <div class="gantt-task">Load & Stress Testing</div>
+                        <div class="gantt-timeline">
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                            <div class="gantt-bar-container">
+                                <div class="gantt-bar span-1">1 wk</div>
+                            </div>
+                            <div class="week-marker"></div>
+                        </div>
+                    </div>
+
+                    <div class="gantt-row">
+                        <div class="gantt-task">Beta Testing & User Feedback</div>
+                        <div class="gantt-timeline">
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                            <div class="week-marker"></div>
+                            <div class="gantt-bar-container">
+                                <div class="gantt-bar span-1">1 wk</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 11: What This Enables -->
+        <section class="slide" data-slide="11">
+            <div class="slide-content">
+                <div class="hero-section">
+                    <div class="hero-icon">
+                        <span class="material-icons">rocket_launch</span>
+                    </div>
+                    <h2>What This Enables for the Business</h2>
+                    <p class="subtitle">This transformation unlocks:</p>
+                </div>
+
+                <div class="icon-grid">
+                    <div class="icon-block">
+                        <div class="icon">
+                            <span class="material-icons">payments</span>
+                        </div>
+                        <h4>Recurring Revenue</h4>
+                        <p>Predictable subscription income</p>
+                    </div>
+                    <div class="icon-block">
+                        <div class="icon">
+                            <span class="material-icons">touch_app</span>
+                        </div>
+                        <h4>Low-touch Onboarding</h4>
+                        <p>Clients self-serve without support</p>
+                    </div>
+                    <div class="icon-block">
+                        <div class="icon">
+                            <span class="material-icons">public</span>
+                        </div>
+                        <h4>Global Scalability</h4>
+                        <p>Serve unlimited clients worldwide</p>
+                    </div>
+                    <div class="icon-block">
+                        <div class="icon">
+                            <span class="material-icons">savings</span>
+                        </div>
+                        <h4>Lower Operational Cost</h4>
+                        <p>Automation reduces manual work</p>
+                    </div>
+                    <div class="icon-block">
+                        <div class="icon">
+                            <span class="material-icons">speed</span>
+                        </div>
+                        <h4>Faster Expansion</h4>
+                        <p>Enter new markets quickly</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 12: Risks & Mitigation -->
+        <section class="slide" data-slide="12">
+            <div class="slide-content">
+                <h2>Risks & How We Manage Them</h2>
+                <p class="subtitle">Key risks + mitigation strategies</p>
+
+                <div class="icon-grid">
+                    <div class="icon-block">
+                        <div class="icon">
+                            <span class="material-icons">warning</span>
+                        </div>
+                        <h4>Feature Overload</h4>
+                        <p><strong>Mitigation:</strong> Strict MVP focus, no scope creep</p>
+                    </div>
+                    <div class="icon-block">
+                        <div class="icon">
+                            <span class="material-icons">schedule</span>
+                        </div>
+                        <h4>Delays</h4>
+                        <p><strong>Mitigation:</strong> Weekly checkpoints and agile sprints</p>
+                    </div>
+                    <div class="icon-block">
+                        <div class="icon">
+                            <span class="material-icons">help</span>
+                        </div>
+                        <h4>User Confusion</h4>
+                        <p><strong>Mitigation:</strong> Guided onboarding + video demos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 13: Call to Action -->
+        <section class="slide" data-slide="13">
+            <div class="slide-content">
+                <h2>Call to Action</h2>
+                <p class="subtitle">To move ahead, we need to:</p>
+
+                <div class="cta-grid">
+                    <div class="cta-item">
+                        <h4>1. Approve the Roadmap</h4>
+                        <p>Sign off on the 90-day transformation plan</p>
+                    </div>
+                    <div class="cta-item">
+                        <h4>2. Finalize Pricing</h4>
+                        <p>Determine pricing ranges for each tier</p>
+                    </div>
+                    <div class="cta-item">
+                        <h4>3. Align on Beta Clients</h4>
+                        <p>Identify 3-5 early access partners</p>
+                    </div>
+                    <div class="cta-item">
+                        <h4>4. Begin Month 1</h4>
+                        <p>Start foundation work immediately</p>
+                    </div>
+                </div>
+
+                <div class="final-cta">
+                    <h3>Let's Transform Aimee Together</h3>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="controls">
+        <button class="nav-btn" id="prevBtn">
+            <span class="material-icons">arrow_back</span>
+        </button>
+        <span class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">13</span></span>
+        <button class="nav-btn" id="nextBtn">
+            <span class="material-icons">arrow_forward</span>
+        </button>
+    </div>
+
+    <script>
+        (function() {
+            let currentSlide = 1;
+            const totalSlides = 13;
+
+            document.getElementById('totalSlides').textContent = totalSlides;
+
+            function updateProgress() {
+                const progress = (currentSlide / totalSlides) * 100;
+                document.getElementById('progressFill').style.width = progress + '%';
+            }
+
+            function showSlide(n) {
+                const slides = document.querySelectorAll('.slide');
+                slides.forEach(slide => slide.classList.remove('active'));
+                slides[n - 1].classList.add('active');
+
+                document.getElementById('currentSlide').textContent = n;
+
+                const prevBtn = document.getElementById('prevBtn');
+                const nextBtn = document.getElementById('nextBtn');
+
+                prevBtn.disabled = n === 1;
+                nextBtn.disabled = n === totalSlides;
+
+                updateProgress();
+            }
+
+            document.getElementById('prevBtn').addEventListener('click', () => {
+                if (currentSlide > 1) {
+                    currentSlide--;
+                    showSlide(currentSlide);
+                }
+            });
+
+            document.getElementById('nextBtn').addEventListener('click', () => {
+                if (currentSlide < totalSlides) {
+                    currentSlide++;
+                    showSlide(currentSlide);
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                    if (currentSlide > 1) {
+                        currentSlide--;
+                        showSlide(currentSlide);
+                    }
+                } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+                    e.preventDefault();
+                    if (currentSlide < totalSlides) {
+                        currentSlide++;
+                        showSlide(currentSlide);
+                    }
+                } else if (e.key === 'Home') {
+                    currentSlide = 1;
+                    showSlide(currentSlide);
+                } else if (e.key === 'End') {
+                    currentSlide = totalSlides;
+                    showSlide(currentSlide);
+                } else if (e.key === 'f' || e.key === 'F') {
+                    if (!document.fullscreenElement) {
+                        document.documentElement.requestFullscreen();
+                    } else {
+                        document.exitFullscreen();
+                    }
+                }
+            });
+
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            document.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            document.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                const swipeThreshold = 50;
+
+                if (touchEndX < touchStartX - swipeThreshold && currentSlide < totalSlides) {
+                    currentSlide++;
+                    showSlide(currentSlide);
+                } else if (touchEndX > touchStartX + swipeThreshold && currentSlide > 1) {
+                    currentSlide--;
+                    showSlide(currentSlide);
+                }
+            });
+
+            showSlide(currentSlide);
+
+            console.log('%cPresentation Controls:', 'font-size: 16px; font-weight: bold; color: #6366f1;');
+            console.log('→ / ↓ / Space: Next slide');
+            console.log('← / ↑: Previous slide');
+            console.log('Home: First slide');
+            console.log('End: Last slide');
+            console.log('F: Toggle fullscreen');
+        })();
+    </script>
+</body>
+</html>
