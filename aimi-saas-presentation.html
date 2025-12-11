@@ -141,18 +141,18 @@
         }
 
         .logo {
-            width: 100px;
-            height: 100px;
+            width: auto;
+            height: 80px;
             margin: 0 auto 2rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            font-weight: 800;
-            color: white;
-            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.25);
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
         }
 
         /* Two column layout */
@@ -558,6 +558,25 @@
             justify-content: center;
         }
 
+        /* Header Logo */
+        .slide-header {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            z-index: 10;
+        }
+
+        .slide-header img {
+            height: 35px;
+            width: auto;
+            object-fit: contain;
+            opacity: 0.8;
+        }
+
+        .slide-1 .slide-header {
+            display: none;
+        }
+
         /* Navigation */
         .controls {
             position: fixed;
@@ -579,10 +598,10 @@
             background: var(--primary);
             color: white;
             border: none;
-            width: 52px;
-            height: 52px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
@@ -592,7 +611,7 @@
         }
 
         .nav-btn .material-icons {
-            font-size: 28px;
+            font-size: 20px;
         }
 
         .nav-btn:hover:not(:disabled) {
@@ -681,7 +700,9 @@
         <!-- Slide 1: Title -->
         <section class="slide active slide-1" data-slide="1">
             <div class="slide-content">
-                <div class="logo">A</div>
+                <div class="logo">
+                    <img src="/Users/naveedshah/Downloads/2_AimiLogos/aimee/aimee.png" alt="Aimee Logo">
+                </div>
                 <h1>Transforming Aimee Into a Scalable SaaS Platform</h1>
                 <p class="subtitle">A 90-Day Business Transformation Plan</p>
             </div>
@@ -689,6 +710,9 @@
 
         <!-- Slide 2: Why This Transformation Matters -->
         <section class="slide" data-slide="2">
+            <div class="slide-header">
+                <img src="/Users/naveedshah/Downloads/2_AimiLogos/aimee/aimee_black.png" alt="Aimee">
+            </div>
             <div class="slide-content">
                 <h2>Why This Transformation Matters</h2>
                 <p class="subtitle">Aimee is powerful — but as a standalone app, it cannot scale fast enough.</p>
@@ -715,6 +739,9 @@
 
         <!-- Slide 3: What Aimee Will Become -->
         <section class="slide" data-slide="3">
+            <div class="slide-header">
+                <img src="/Users/naveedshah/Downloads/2_AimiLogos/aimee/aimee_black.png" alt="Aimee">
+            </div>
             <div class="slide-content">
                 <h2>What Aimee Will Become</h2>
                 <p class="subtitle">In 90 days, Aimee transforms into:</p>
@@ -754,6 +781,9 @@
 
         <!-- Slide 4: 90-Day Plan at a Glance -->
         <section class="slide" data-slide="4">
+            <div class="slide-header">
+                <img src="/Users/naveedshah/Downloads/2_AimiLogos/aimee/aimee_black.png" alt="Aimee">
+            </div>
             <div class="slide-content">
                 <h2>90-Day Plan at a Glance</h2>
                 <p class="subtitle">A simple, elegant timeline</p>
@@ -783,6 +813,9 @@
 
         <!-- Slide 5: Month 1 - Build the Foundation -->
         <section class="slide" data-slide="5">
+            <div class="slide-header">
+                <img src="/Users/naveedshah/Downloads/2_AimiLogos/aimee/aimee_black.png" alt="Aimee">
+            </div>
             <div class="slide-content">
                 <h2>Month 1: Build the Foundation</h2>
                 <p class="subtitle">Focus: Make Aimee ready for scale</p>
@@ -815,6 +848,9 @@
 
         <!-- Slide 6: Month 1 Gantt Chart -->
         <section class="slide" data-slide="6">
+            <div class="slide-header">
+                <img src="/Users/naveedshah/Downloads/2_AimiLogos/aimee/aimee_black.png" alt="Aimee">
+            </div>
             <div class="slide-content">
                 <h2>Month 1: Detailed Timeline</h2>
                 <p class="subtitle">Week-by-week breakdown of foundation activities</p>
@@ -917,6 +953,9 @@
 
         <!-- Slide 7: Month 2 - Add Core SaaS Experience -->
         <section class="slide" data-slide="7">
+            <div class="slide-header">
+                <img src="/Users/naveedshah/Downloads/2_AimiLogos/aimee/aimee_black.png" alt="Aimee">
+            </div>
             <div class="slide-content">
                 <h2>Month 2: Add Core SaaS Experience</h2>
                 <p class="subtitle">Focus: Make Aimee usable without support</p>
@@ -949,6 +988,9 @@
 
         <!-- Slide 8: Month 2 Gantt Chart -->
         <section class="slide" data-slide="8">
+            <div class="slide-header">
+                <img src="/Users/naveedshah/Downloads/2_AimiLogos/aimee/aimee_black.png" alt="Aimee">
+            </div>
             <div class="slide-content">
                 <h2>Month 2: Detailed Timeline</h2>
                 <p class="subtitle">Week-by-week breakdown of core feature development</p>
@@ -1050,6 +1092,9 @@
 
         <!-- Slide 9: Month 3 - Monetize & Launch -->
         <section class="slide" data-slide="9">
+            <div class="slide-header">
+                <img src="/Users/naveedshah/Downloads/2_AimiLogos/aimee/aimee_black.png" alt="Aimee">
+            </div>
             <div class="slide-content">
                 <h2>Month 3: Monetize & Launch</h2>
                 <p class="subtitle">Focus: Convert usage into revenue</p>
@@ -1097,6 +1142,9 @@
 
         <!-- Slide 10: Month 3 Gantt Chart -->
         <section class="slide" data-slide="10">
+            <div class="slide-header">
+                <img src="/Users/naveedshah/Downloads/2_AimiLogos/aimee/aimee_black.png" alt="Aimee">
+            </div>
             <div class="slide-content">
                 <h2>Month 3: Detailed Timeline</h2>
                 <p class="subtitle">Week-by-week breakdown of monetization and launch activities</p>
@@ -1199,6 +1247,9 @@
 
         <!-- Slide 11: What This Enables -->
         <section class="slide" data-slide="11">
+            <div class="slide-header">
+                <img src="/Users/naveedshah/Downloads/2_AimiLogos/aimee/aimee_black.png" alt="Aimee">
+            </div>
             <div class="slide-content">
                 <div class="hero-section">
                     <div class="hero-icon">
@@ -1250,6 +1301,9 @@
 
         <!-- Slide 12: Risks & Mitigation -->
         <section class="slide" data-slide="12">
+            <div class="slide-header">
+                <img src="/Users/naveedshah/Downloads/2_AimiLogos/aimee/aimee_black.png" alt="Aimee">
+            </div>
             <div class="slide-content">
                 <h2>Risks & How We Manage Them</h2>
                 <p class="subtitle">Key risks + mitigation strategies</p>
@@ -1282,6 +1336,9 @@
 
         <!-- Slide 13: Call to Action -->
         <section class="slide" data-slide="13">
+            <div class="slide-header">
+                <img src="/Users/naveedshah/Downloads/2_AimiLogos/aimee/aimee_black.png" alt="Aimee">
+            </div>
             <div class="slide-content">
                 <h2>Call to Action</h2>
                 <p class="subtitle">To move ahead, we need to:</p>
